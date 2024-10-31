@@ -1,5 +1,13 @@
 <div class="home_container">
-    <div class="lista_container">
-        <app-card-tarefa [tarefa]="tarefa1"></app-card-tarefa>
+    <div 
+        cdkDropList 
+        [cdkDropListData]="tarefas" 
+        class="lista_container" 
+        (cdkDropListDropped)="drop($event)">
+        
+        <div *ngFor="let tarefa of tarefas" cdkDrag>
+            <app-card-tarefa [tarefa]="tarefa"></app-card-tarefa>
+        </div>
+        
     </div>
 </div>
