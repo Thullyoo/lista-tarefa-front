@@ -1,0 +1,28 @@
+.card_container{
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    border-radius: 20px;
+    gap: 70px;
+    width: 690px;
+    height: 120px; 
+    color: white;
+    padding: 20px;
+    border: 2px solid aliceblue; 
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s; 
+}
+
+.card_container:hover {
+    transform: scale(1.02); 
+}
+
+.content_container{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+}
+.sequencia_container{
+    width: 15%;
+    margin-top: 20px;
+}
