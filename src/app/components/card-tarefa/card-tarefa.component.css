@@ -1,17 +1,38 @@
 .card_container{
+    background-color:black;
+    color: white;
     display: flex;
     flex-direction: row;
-    background-color: black;
     border-radius: 20px;
     gap: 70px;
     width: 690px;
     height: 120px; 
-    color: white;
     padding: 20px;
+    padding-top: 10px;
     border: 2px solid aliceblue; 
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-    transition: transform 0.2s; 
+    transition: transform 0.2s;  
 }
+
+.card_extra_container{
+    background-color: rgb(172, 172, 54);
+    color: black;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    gap: 70px;
+    width: 690px;
+    height: 120px; 
+    padding: 20px;
+    padding-top: 10px;
+    border: 2px solid aliceblue; 
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s;
+}
+.card_extra_container:hover {
+    transform: scale(1.02); 
+}
+
 
 .card_container:hover {
     transform: scale(1.02); 
@@ -22,7 +43,29 @@
     flex-direction: column;
     width: 85%;
 }
-.sequencia_container{
+.opcoes_container{
     width: 15%;
-    margin-top: 20px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.opcoes_container > button{
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+#btn_editar:hover{
+    background-color: green;
+    color: black;
+}
+
+#btn_excluir:hover{
+    background-color: red;
+    color: black;
 }
