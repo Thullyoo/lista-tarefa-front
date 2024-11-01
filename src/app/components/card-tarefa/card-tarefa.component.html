@@ -1,4 +1,6 @@
-<div class="card_container">
+<div [ngClass]="{'card_container, card_extra_container': this.tarefa().custo >= 1000,
+                'card_container': this.tarefa().custo < 1000
+}">
     <div class="content_container">
         <div class="id_container">
             <p>Id: {{this.tarefa().id}}</p>
@@ -13,7 +15,8 @@
             <p>Data Limite: {{this.tarefa().dataLimite}}</p>
         </div>
     </div>
-   <div class="sequencia_container">
-        <h1>{{this.tarefa().ordemApresentacao}}</h1>
+   <div class="opcoes_container">
+        <button id="btn_editar">Editar</button>
+        <button id="btn_excluir">Excluir</button>
    </div>
 </div>
