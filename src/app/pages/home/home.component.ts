@@ -1,5 +1,5 @@
 import { Tarefa } from './../../type/tarefa-type';
-import { Component, inject, type OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CardTarefaComponent } from '../../components/card-tarefa/card-tarefa.component';
 import {
   CdkDragDrop,
@@ -8,7 +8,6 @@ import {
   DragDropModule,
 } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
-import { TarefaServiceService } from '../../services/tarefa-service.service';
 
 @Component({
   selector: 'app-home',
@@ -17,43 +16,44 @@ import { TarefaServiceService } from '../../services/tarefa-service.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
+export class HomeComponent {
+  tarefa1: Tarefa = {
+    nome: "Tarefa 1",
+    id: 1,
+    custo: 50.0,
+    dataLimite: new Date('2024-11-30'), // Data limite específica
+    ordemApresentacao: 1
+};
 
-export class HomeComponent implements OnInit{
-  
-  tarefaService = inject(TarefaServiceService);
+tarefa2: Tarefa = {
+    nome: "Tarefa 2",
+    id: 2,
+    custo: 75.0,
+    dataLimite: new Date('2024-12-15'), // Data limite específica
+    ordemApresentacao: 2
+};
 
-  tarefas: Tarefa[] = []
+tarefa3: Tarefa = {
+    nome: "Tarefa 3",
+    id: 3,
+    custo: 100.0,
+    dataLimite: new Date('2024-12-31'), // Data limite específica
+    ordemApresentacao: 3
+};
 
-  ngOnInit(): void {
-    this.tarefaService.getTarefa().subscribe(
-      {
-        next: res => {
-          this.tarefas = res;
-        },
-        error: err =>{
-          console.error(err);
-        }
-      }
-    )
-  }
-  mostrarBtn: { [key: number]: boolean } = {};
-
+tarefa4: Tarefa = {
+    nome: "Tarefa 4",
+    id: 4,
+    custo: 25.0,
+    dataLimite: new Date('2025-01-15'), // Data limite específica
+    ordemApresentacao: 4
+};
+tarefas: Tarefa[] = [this.tarefa1, this.tarefa2, this.tarefa3, this.tarefa4];
   drop(event: CdkDragDrop<any[]>) {
     moveItemInArray(this.tarefas, event.previousIndex, event.currentIndex);
     
-    console.log(event.previousIndex)
-    console.log(event.currentIndex)
-
     this.tarefas.forEach((tarefa, index) => {
-      tarefa.ordem_apresentacao = index + 1;
+      tarefa.ordemApresentacao = index + 1;
     });
-  }
-
-  up(){
-    
-  }
-
-  down(){
-
   }
 }

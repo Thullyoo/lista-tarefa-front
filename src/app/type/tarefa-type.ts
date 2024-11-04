@@ -1,7 +1,7 @@
 export interface Tarefa {
     id: number;          // Identificador da tarefa (chave primária)
-    name: String;       // Nome da tarefa
+    nome: string;       // Nome da tarefa
     custo: number;      // Custo (R$)
-    data_limite: Date;   // Data limite
-    ordem_apresentacao: number; // Ordem de apresentação (campo numérico, não repetido)
+    dataLimite: Date;   // Data limite
+    ordemApresentacao: number; // Ordem de apresentação (campo numérico, não repetido)
 }

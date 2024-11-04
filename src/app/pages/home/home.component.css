@@ -1,70 +1,16 @@
 .home_container{
     display: flex;
     width: 100%;
-    min-height: 100vh;
-    flex-direction: column;
+    height: 100vh;
     justify-content: center;
-    align-items: center;
-    padding: 20px; 
+
 }
 
 .lista_container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    margin-top: 50px;
     width: 70%;
-    padding: 20px;
-}
-.btn_container{
-   display: flex;
-   flex-direction: column;
-   height: 100%;
-   justify-content: center;
-   gap: 15px; 
-}
-
-.btn_container > button{
-    color: white;
-    background-color: transparent;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.tarefa_container{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-
-.tarefa_container:last-child {
-    margin-bottom: 20px; 
-  }
-
-#down_btn,
-#up_btn {
-    transition: transform 0.2s;
-}
-#down_btn:hover,
-#up_btn:hover{
-    transform: scale(2);
-}
-
-.incluir_container{
-    display: flex;
-    margin: 50px 0px;
-}
-
-.incluir_container > button{
-    width: 250px;
-    height: 70px;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.incluir_container > button:hover{
-    background-color: yellow;
+    gap:0px
 }
