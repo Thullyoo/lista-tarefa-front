@@ -1,13 +1,20 @@
 <div class="home_container">
+    <div class="incluir_container">
+        <button>
+            Incluir Tarefa
+        </button>
+    </div>
     <div 
         cdkDropList 
         [cdkDropListData]="tarefas" 
         class="lista_container" 
         (cdkDropListDropped)="drop($event)">
         
-        <div *ngFor="let tarefa of tarefas" cdkDrag>
+        <div *ngFor="let tarefa of tarefas" cdkDrag class="tarefa_container"
+        (mouseenter)="mostrarBtn[tarefa.id] = true" (mouseleave)="mostrarBtn[tarefa.id] = false"
+        >
             <app-card-tarefa [tarefa]="tarefa"></app-card-tarefa>
+            <div class="btn_container" *ngIf="mostrarBtn[tarefa.id]"><button (click)="up()" id="up_btn">⬆</button><button id="down_btn" (click)="down()">⬇</button></div>
         </div>
-        
     </div>
 </div>
