@@ -6,13 +6,13 @@
             <p>Id: {{this.tarefa().id}}</p>
         </div>
         <div class="nome_container">
-            <p>Nome da tarefa: {{this.tarefa().nome}}</p>
+            <p>Nome da tarefa: {{this.tarefa().name}}</p>
         </div>
         <div class="custo_container">
             <p>Custo: R${{this.tarefa().custo}}</p>
         </div>
         <div class="data_container">
-            <p>Data Limite: {{this.tarefa().dataLimite}}</p>
+            <p>Data Limite: {{formatDate(this.tarefa().data_limite)}}</p>
         </div>
     </div>
    <div class="opcoes_container">
