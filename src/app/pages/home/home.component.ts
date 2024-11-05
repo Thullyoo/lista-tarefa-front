@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit{
     this.tarefaService.listarTarefa().subscribe(
       {
         next: res => {
-          this.tarefas = res;
+          this.tarefas = res.sort((a,b) =>  a.ordem_apresentacao - b.ordem_apresentacao );
         },
         error: err => {
           console.error(err);
@@ -44,10 +44,7 @@ export class HomeComponent implements OnInit{
     moveItemInArray(this.tarefas, event.previousIndex, event.currentIndex);
     
     let listaOrdem: TarefaOrdem[] = [];
-
-    console.log(event.previousIndex)
-    console.log(event.currentIndex)
-
+    
     this.tarefas.forEach((tarefa, index) => {
       tarefa.ordem_apresentacao = index + 1;
       listaOrdem.push({
