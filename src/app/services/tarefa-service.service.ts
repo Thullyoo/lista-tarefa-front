@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import type { Tarefa } from '../type/tarefa-type';
 import type { Observable } from 'rxjs';
 import type { TarefaOrdem } from '../type/tarefa-ordem-type';
+import type TarefaDTO from '../type/tarefa-dto-type';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +26,10 @@ export class TarefaServiceService {
     });
   }
   
+  incluirTarefa(dto: TarefaDTO){
+    this.httpClient.post(this.url, dto).subscribe({
+      next: (response) => console.log("Requisição bem-sucedida", response),
+        error: (error) => console.error("Erro ao fazer a requisição", error)
+    });
+  }
 }
