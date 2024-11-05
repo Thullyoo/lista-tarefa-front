@@ -10,18 +10,29 @@ import {
 } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { TarefaServiceService } from '../../services/tarefa-service.service';
+import { FormIncluirComponent } from '../../components/form-incluir/form-incluir.component';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardTarefaComponent, CdkDropList, CommonModule, DragDropModule],
+  imports: [CardTarefaComponent, CdkDropList, CommonModule, DragDropModule, FormIncluirComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 
 export class HomeComponent implements OnInit{
   
+  displayForm = false; 
+
+  toggleForm() {
+    this.displayForm = !this.displayForm; 
+  }
+
+  closeForm() {
+    this.displayForm = false; 
+  } 
+
   tarefaService = inject(TarefaServiceService);
 
   tarefas: Tarefa[] = []

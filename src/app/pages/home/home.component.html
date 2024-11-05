@@ -1,6 +1,7 @@
 <div class="home_container">
+    <app-form-incluir *ngIf="displayForm"  (close)="closeForm()"></app-form-incluir>
     <div class="incluir_container">
-        <button>
+        <button (click)="toggleForm()">
             Incluir Tarefa
         </button>
     </div>
