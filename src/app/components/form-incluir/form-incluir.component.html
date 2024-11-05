@@ -1,0 +1,24 @@
+<div class="modal-overlay">
+  <div class="form_container modal">
+    <form [formGroup]="form" (submit)="incluirTarefa($event)">
+      <div class="btn_cancelar">
+        <button type="button" (click)="closeForm()">X</button>
+      </div>
+      <div class="form_titulo">
+        <h1>Incluir Tarefa:</h1>
+      </div>
+      <div class="tarefa_nome">
+        <input type="text" placeholder="Nome da tarefa" formControlName="nome">
+      </div>
+      <div class="tarefa_custo">
+        <input type="text" placeholder="Custo da tarefa" formControlName="custo">
+      </div>
+      <div class="tarefa_data">
+        <input type="date" formControlName="data">
+      </div>
+      <div>
+        <button type="submit">Incluir</button>
+      </div>
+    </form>
+  </div>
+</div>
