@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, type InputSignal } from '@angular/core';
 import type { Tarefa } from '../type/tarefa-type';
 import type { Observable } from 'rxjs';
 import type { TarefaOrdem } from '../type/tarefa-ordem-type';
@@ -28,6 +28,13 @@ export class TarefaServiceService {
   
   incluirTarefa(dto: TarefaDTO){
     this.httpClient.post(this.url, dto).subscribe({
+      next: (response) => console.log("Requisição bem-sucedida", response),
+        error: (error) => console.error("Erro ao fazer a requisição", error)
+    });
+  }
+
+  excluirTarefa(tarefa_id: Number){
+    this.httpClient.delete(this.url + `/${tarefa_id}`).subscribe({
       next: (response) => console.log("Requisição bem-sucedida", response),
         error: (error) => console.error("Erro ao fazer a requisição", error)
     });
