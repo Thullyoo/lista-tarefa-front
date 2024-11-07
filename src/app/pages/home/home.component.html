@@ -15,7 +15,6 @@
         (mouseenter)="mostrarBtn[tarefa.id] = true" (mouseleave)="mostrarBtn[tarefa.id] = false"
         >
             <app-card-tarefa [tarefa]="tarefa"></app-card-tarefa>
-            <div class="btn_container" *ngIf="mostrarBtn[tarefa.id]"><button (click)="up()" id="up_btn">⬆</button><button id="down_btn" (click)="down()">⬇</button></div>
         </div>
     </div>
 </div>
