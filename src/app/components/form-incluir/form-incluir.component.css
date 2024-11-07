@@ -47,6 +47,8 @@
 }
 
 .btn_cancelar button{
+  font-weight: bold;
+
   position: absolute;
   width: 40px;
   right: 0;
