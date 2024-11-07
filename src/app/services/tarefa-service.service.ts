@@ -39,4 +39,11 @@ export class TarefaServiceService {
         error: (error) => console.error("Erro ao fazer a requisição", error)
     });
   }
+
+  editarTarefa(tarefa_id: Number, dto: TarefaDTO){
+    this.httpClient.put(this.url + `/${tarefa_id}`, dto).subscribe({
+      next: (response) => console.log("Requisição bem-sucedida", response),
+        error: (error) => console.error("Erro ao fazer a requisição", error)
+    });
+  }
 }
