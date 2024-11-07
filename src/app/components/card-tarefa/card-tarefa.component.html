@@ -1,6 +1,7 @@
 <div [ngClass]="{'card_container, card_extra_container': this.tarefa().custo >= 1000,
                 'card_container': this.tarefa().custo < 1000
 }">
+    
     <div class="content_container">
         <div class="id_container">
             <p>Id: {{this.tarefa().id}}</p>
@@ -16,7 +17,18 @@
         </div>
     </div>
    <div class="opcoes_container">
-        <button id="btn_editar">Editar</button>
-        <button id="btn_excluir">Excluir</button>
+        <button id="btn_editar" (click)="toggleFormEditar()" >Editar</button>
+        <button id="btn_excluir" (click)="toggleFormExcluir()">Excluir</button>
    </div>
 </div>
+<app-form-excluir 
+  *ngIf="displayFormExcluir && tarefa() && tarefa().id !== undefined" 
+  [tarefa_id]="this.tarefa().id" 
+  (close)="closeFormExcluir()">
+</app-form-excluir>
+<app-form-editar 
+  *ngIf="displayFormEditar && tarefa() && tarefa().id !== undefined" 
+  [tarefa_id]="this.tarefa().id" 
+  (close)="closeFormEditar()">
+</app-form-editar>
+
