@@ -1,27 +1,46 @@
-# ListaTarefaFront
+# Lista de Tarefas - Front-End
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+Este projeto é um **front-end** de uma aplicação de **gerenciamento de tarefas**. O sistema permite aos usuários **editar, excluir, incluir e listar tarefas**. A interface foi construída com **Angular** e utiliza **CDK** para funcionalidades de arrastar e soltar. 
 
-## Development server
+## Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Incluir Tarefa**: Permite ao usuário adicionar novas tarefas à lista.
+- **Editar Tarefa**: O usuário pode editar o nome, custo e data de uma tarefa.
+- **Excluir Tarefa**: O usuário pode excluir uma tarefa existente.
+- **Arrastar e Soltar**: As tarefas podem ser reorganizadas utilizando o recurso de drag-and-drop (arrastar e soltar).
+- **Exibição de Tarefas**: As tarefas são exibidas com informações como `ID`, `Nome`, `Custo` e `Data Limite`.
+  
+## Tecnologias Utilizadas
 
-## Code scaffolding
+- **Angular**: Framework para a construção da aplicação.
+- **Angular CDK**: Biblioteca para implementar a funcionalidade de drag-and-drop.
+- **CSS**: Estilos personalizados para a interface de usuário.
+  
+## Instalação
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+É necessário ter o MySql instalado e ter configurado o back-end: https://github.com/Thullyoo/lista-tarefa-back
 
-## Build
+Siga os passos abaixo para rodar o projeto localmente:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Clone o repositório**:
+   ```bash
+   git clone https://github.com/Thullyoo/lista-tarefa-front.git
+2. **Navegue até o diretório do projeto:
+   ```bash
+   cd lista-tarefa-front
+3. **Instale as dependências:
+   ```bash
+   npm install
+4. **Inicie o servidor de desenvolvimento:
+   ```bash
+   ng serve
+5. Acesse a aplicação no navegador:
+   ```bash
+   http://localhost:4200
 
-## Running unit tests
+<p align="center">
+  <img src="example.png" alt="Logo do Projeto" />
+</p>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
