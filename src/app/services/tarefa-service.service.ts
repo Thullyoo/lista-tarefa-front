@@ -4,6 +4,7 @@ import type { Tarefa } from '../type/tarefa-type';
 import type { Observable } from 'rxjs';
 import type { TarefaOrdem } from '../type/tarefa-ordem-type';
 import type TarefaDTO from '../type/tarefa-dto-type';
+import { environment } from '../../enviroment/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class TarefaServiceService {
 
   httpClient: HttpClient = inject(HttpClient);
 
-  private url: string = "http://localhost:8080/tarefas";
+  private url: string = environment.apiUrl;
 
   listarTarefa(): Observable<Tarefa[]>{
     return this.httpClient.get<Tarefa[]>(this.url);
