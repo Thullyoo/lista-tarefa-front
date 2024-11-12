@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: ''  
+  apiUrl: 'https://lista-tarefa-back-production.up.railway.app/'  
 };
