@@ -1,16 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, inject, Output, output, input } from '@angular/core';
+import { Component, EventEmitter, inject, Output, output, input, type OnInit } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TarefaServiceService } from '../../services/tarefa-service.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-form-incluir',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ToastrModule],
   templateUrl: './form-incluir.component.html',
   styleUrl: './form-incluir.component.css'
 })
-export class FormIncluirComponent {
+export class FormIncluirComponent{
+
+  toast = inject(ToastrService);
 
   tarefaService = inject(TarefaServiceService);
 
@@ -19,8 +22,8 @@ export class FormIncluirComponent {
   formService = inject(FormBuilder);
 
   form = this.formService.group({
-    nome: new FormControl<string>("", {validators: Validators.required, nonNullable: true}),
-    custo: new FormControl<number>(0, {validators: Validators.required, nonNullable: true}),
+    nome: new FormControl<string>("", {validators: [Validators.required], nonNullable: true}),
+    custo: new FormControl<number>(0, {validators: [Validators.required, Validators.min(0)], nonNullable: true}),
     data: new FormControl<Date>(new Date, {validators: Validators.required, nonNullable: true})
   })
 
@@ -30,6 +33,10 @@ export class FormIncluirComponent {
 
   incluirTarefa(e: SubmitEvent) {
     e.preventDefault();
+    if(this.form.controls.custo.invalid){
+      this.toast.error("Valor custo não pode ser negativo");
+      return
+    }
     this.tarefaService.incluirTarefa({
       nome: this.form.controls.nome.value,
       custo: this.form.controls.custo.value,
