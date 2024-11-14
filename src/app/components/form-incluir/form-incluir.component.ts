@@ -1,17 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, inject, Output, output, input, type OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Output, output, input, type OnInit, ViewChild} from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TarefaServiceService } from '../../services/tarefa-service.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { Directive, ElementRef, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-form-incluir',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ToastrModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './form-incluir.component.html',
   styleUrl: './form-incluir.component.css'
 })
-export class FormIncluirComponent{
+export class FormIncluirComponent implements AfterViewInit{
+
+  @ViewChild('inputnome') inputnome!: ElementRef;
+
+  ngAfterViewInit(): void {
+    this.inputnome.nativeElement.focus();
+  }
 
   toast = inject(ToastrService);
 
@@ -43,4 +50,7 @@ export class FormIncluirComponent{
       data_limite: this.form.controls.data.value,
     })
   } 
+
+
 }
+
