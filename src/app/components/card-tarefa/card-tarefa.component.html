@@ -28,7 +28,7 @@
 </app-form-excluir>
 <app-form-editar 
   *ngIf="displayFormEditar && tarefa() && tarefa().id !== undefined" 
-  [tarefa_id]="this.tarefa().id" 
+  [tarefa]="this.tarefa()" 
   (close)="closeFormEditar()">
 </app-form-editar>
 

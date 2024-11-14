@@ -1,5 +1,5 @@
 export default interface TarefaDTO{
-    nome: string | null,
+    nome: String | null,
     custo: number | null,
-    data_limite: Date | null
+    data_limite: Date | String
 }
