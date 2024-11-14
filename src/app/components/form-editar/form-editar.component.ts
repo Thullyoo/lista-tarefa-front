@@ -3,6 +3,7 @@ import { Component, EventEmitter, inject, Input, input, Output, ViewChild, type 
 import { TarefaServiceService } from '../../services/tarefa-service.service';
 import type { Tarefa } from '../../type/tarefa-type';
 import type { Data } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-form-editar',
@@ -13,13 +14,15 @@ import type { Data } from '@angular/router';
 })
 export class FormEditarComponent implements AfterViewInit, OnInit{
 
+  toast = inject(ToastrService)
+
   datalimite: string = ''; 
 
   ngOnInit(): void {
   
     const dataLimite = new Date(this.tarefa.data_limite);
 
-    dataLimite.setDate(dataLimite.getDate() - 1);
+    dataLimite.setDate(dataLimite.getDate());
 
     this.datalimite = dataLimite.toISOString().split('T')[0]; 
 
@@ -52,35 +55,52 @@ export class FormEditarComponent implements AfterViewInit, OnInit{
   }
 
   form = this.formService.group({
-    nome: new FormControl<String>("", {validators: Validators.required, nonNullable: true}),
-    custo: new FormControl<number>(0, {validators: Validators.required, nonNullable: true}),
-    data: new FormControl<Date | String>(new Date(), {validators: Validators.required, nonNullable: true})
+    nome: new FormControl<String>("", {validators: [Validators.required, Validators.minLength(5)], nonNullable: true}),
+    custo: new FormControl<number>(0, {validators: [Validators.required, Validators.min(0), Validators.pattern(/^\d+([.,]\d+)?$/)], nonNullable: true}),
+    data: new FormControl<Date | String>(new Date(),{validators: [ Validators.required, Validators.min(new Date(new Date().getTime() + 24 * 60 * 60 * 1000).getTime())], nonNullable: true})
   });
   
 
-  editarTarefa() {
+  editarTarefa(e: SubmitEvent) {
 
-    let data: Date | String = this.form.controls.data.value;
+    e.preventDefault();
 
-    if(data == new Date){
-      data = "";
+    if (this.form.get('nome')?.errors?.['minlength']){
+      this.toast.error("Nome precisa de pelo menos 5 caracteres");
+      return
     }
 
-    let custo:number | null = this.form.controls.custo.value;
-
-    if(custo < 0){
-      custo = null;
+    if (this.form.get('nome')?.errors?.['required']){
+      this.toast.error("Nome é requerido");
+      return
     }
-    let nome: String | null = this.form.controls.nome.value;
 
-    if(nome == ""){
-      nome = null;
+    if (this.form.get('custo')?.errors?.['required']){
+      this.toast.error("Custo é requerido");
+      return
+    }
+    if (this.form.get('custo')?.errors?.['min']){
+      this.toast.error("Custo não pode ser negativo");
+      return
+    }
+    if (this.form.get('custo')?.errors?.['pattern']){
+      this.toast.error("Custo é permitido apenas números");
+      return
+    }
+
+    if (this.form.get('data_limite')?.errors?.['min']) {
+      this.toast.error("Data limite não pode ser para hoje ou antes");
+      return;
+    }
+    if (this.form.get('data_limite')?.errors?.['required']){
+      this.toast.error("Data limite é requirido");
+      return
     }
 
     this.tarefaService.editarTarefa(this.tarefa.id, {
-      nome: nome,
-      custo: custo,
-      data_limite: data
+      nome: this.form.controls.nome.value ,
+      custo: this.form.controls.custo.value,
+      data_limite: this.form.controls.data.value,
     });
     
     

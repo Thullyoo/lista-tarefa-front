@@ -1,6 +1,6 @@
 <div class="modal-overlay">
   <div class="modal">
-    <form [formGroup]="form" (submit)="editarTarefa()">
+    <form [formGroup]="form" (submit)="editarTarefa($event)">
       <div class="btn_cancelar">
         <button type="button" (click)="closeForm()">X</button>
       </div>

@@ -63,7 +63,10 @@ export class TarefaServiceService {
         console.log("Requisição bem-sucedida", response)
         window.location.reload()
     },
-        error: (error) => console.error("Erro ao fazer a requisição", error)
+    error: (error) => {
+      console.error("Erro ao fazer a requisição", error)
+      this.toastr.error(error.error.message)
+    }
     });
   }
 }
