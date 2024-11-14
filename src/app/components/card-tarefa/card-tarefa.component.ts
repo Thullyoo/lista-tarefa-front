@@ -21,7 +21,6 @@ export class CardTarefaComponent implements OnInit{
     this.tarefa_id = this.tarefa().id
   }
 
-
   displayFormExcluir = false;
 
   toggleFormExcluir(){
@@ -34,7 +33,6 @@ export class CardTarefaComponent implements OnInit{
 
   displayFormEditar = false;
 
-
   toggleFormEditar(){
     this.displayFormEditar = !this.displayFormEditar;
   }
@@ -43,9 +41,10 @@ export class CardTarefaComponent implements OnInit{
     this.displayFormEditar = false;
   }
 
-
   formatDate(data: any): string {
+    
     const dateObject = (data instanceof Date) ? data : new Date(data);
+    dateObject.setDate(dateObject.getDate() + 1);
     return dateObject.toLocaleDateString("pt-BR", {
       year: 'numeric',
       month: '2-digit',
