@@ -1,6 +1,6 @@
 import { TarefaOrdem } from './../../type/tarefa-ordem-type';
 import { Tarefa } from './../../type/tarefa-type';
-import { Component, inject, type OnInit } from '@angular/core';
+import { Component, inject, type OnChanges, type OnInit, type SimpleChanges } from '@angular/core';
 import { CardTarefaComponent } from '../../components/card-tarefa/card-tarefa.component';
 import {
   CdkDragDrop,
@@ -21,8 +21,9 @@ import { FormIncluirComponent } from '../../components/form-incluir/form-incluir
   styleUrl: './home.component.css'
 })
 
-export class HomeComponent implements OnInit{
+export class HomeComponent{
   
+
   displayForm = false; 
 
   toggleForm() {
@@ -49,7 +50,6 @@ export class HomeComponent implements OnInit{
       }
     )
   }
-  mostrarBtn: { [key: number]: boolean } = {};
 
   drop(event: CdkDragDrop<any[]>) {
     moveItemInArray(this.tarefas, event.previousIndex, event.currentIndex);
@@ -67,11 +67,5 @@ export class HomeComponent implements OnInit{
     console.log("finalizamos");
   }
 
-  up(){
-    
-  }
-
-  down(){
-
-  }
+ 
 }

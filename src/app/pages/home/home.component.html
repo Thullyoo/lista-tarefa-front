@@ -11,9 +11,7 @@
         class="lista_container" 
         (cdkDropListDropped)="drop($event)">
         
-        <div *ngFor="let tarefa of tarefas" cdkDrag class="tarefa_container"
-        (mouseenter)="mostrarBtn[tarefa.id] = true" (mouseleave)="mostrarBtn[tarefa.id] = false"
-        >
+        <div *ngFor="let tarefa of tarefas" cdkDrag class="tarefa_container">
             <app-card-tarefa [tarefa]="tarefa"></app-card-tarefa>
         </div>
     </div>
